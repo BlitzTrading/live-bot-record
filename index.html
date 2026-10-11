@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live Bot Record: a real DCA trading bot, day by day</title>
+<meta name="description" content="Daily public record of a real Blitz DCA ladder bot trading a live exchange account since 3 Aug 2026. Losing days included.">
+<link rel="canonical" href="https://blitztrading.github.io/live-bot-record/">
+<meta property="og:title" content="Live Bot Record: a real DCA bot, day by day">
+<meta property="og:description" content="A real DCA ladder bot on a live account since 3 Aug 2026. One snapshot a day, losing days included.">
+<meta property="og:url" content="https://blitztrading.github.io/live-bot-record/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Plus+Jakarta+Sans:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root { --dark: #0A0A0F; --panel: #13131B; --line: #26262F; --gold: #F5C842; --text: #F0EEE8; --muted: #9A9890; --green: #22c55e; --red: #f05252; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--dark); color: var(--text); font: 15px/1.55 "DM Sans", system-ui, sans-serif; }
+  a { color: var(--gold); }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
+  header.top { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; gap: 12px; }
+  .brand { font: 800 15px "Plus Jakarta Sans", sans-serif; color: var(--text); text-decoration: none; }
+  .brand span { color: var(--gold); }
+  .toplinks a { color: var(--muted); text-decoration: none; margin-left: 16px; font-size: 14px; }
+  h1 { font: 800 clamp(26px, 5vw, 38px)/1.15 "Plus Jakarta Sans", sans-serif; margin: 14px 0 8px; }
+  .lede { color: var(--muted); max-width: 680px; margin: 0 0 20px; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin-bottom: 18px; min-width: 0; }
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  @media (max-width: 700px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+  .card { background: var(--dark); border: 1px solid var(--line); border-radius: 10px; padding: 12px; min-width: 0; }
+  .card .k { color: var(--muted); font-size: 12px; }
+  .card .v { font: 700 19px "Plus Jakarta Sans", sans-serif; overflow-wrap: anywhere; }
+  .gold { color: var(--gold); } .green { color: var(--green); } .red { color: var(--red); }
+  .tablewrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+  th, td { padding: 7px 8px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { color: var(--muted); font-weight: 500; font-size: 12px; }
+  th:first-child, td:first-child, td:nth-child(3), th:nth-child(3) { text-align: left; }
+  img.chart { width: 100%; height: auto; display: block; border-radius: 10px; }
+  .btn { display: inline-block; background: var(--gold); color: #111; border-radius: 9px; padding: 10px 16px; font-weight: 700; text-decoration: none; margin: 10px 10px 0 0; }
+  .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+  .cta h2 { font: 800 20px "Plus Jakarta Sans", sans-serif; margin: 0 0 6px; }
+  .muted { color: var(--muted); }
+  footer { border-top: 1px solid var(--line); padding: 20px 0 40px; color: var(--muted); font-size: 13px; }
+  footer a { color: var(--muted); }
+  .social { color: var(--muted); font-size: 13px; margin: 24px 0 12px; line-height: 2; }
+  .social a { color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="https://www.blitz-trading.com/?utm_source=github_pages&amp;utm_medium=web_page&amp;utm_campaign=gh_live_record&amp;utm_content=header_logo">BLITZ <span>TRADING</span></a>
+    <nav class="toplinks">
+      <a href="https://www.youtube.com/@Blitztradinglab/live">Live stream</a>
+      <a href="https://github.com/BlitzTrading/live-bot-record">Data</a>
+    </nav>
+  </header>
+
+  <h1>Live Bot Record</h1>
+  <p class="lede">A real Blitz DCA ladder bot has traded a live exchange account since 3 August 2026, on a 24/7 stream. Once a day we copy what the stream shows here. Losing days stay in, and wallet balances are never recorded.</p>
+
+  <div class="panel">
+    <div class="cards" id="cards"><div class="card"><div class="k">Status</div><div class="v">Loading…</div></div></div>
+  </div>
+  <div class="panel"><img class="chart" src="chart.svg" alt="Unrealized P&amp;L per day"></div>
+  <div class="panel tablewrap">
+    <table>
+      <thead><tr><th>Date (KST)</th><th>Day</th><th>Position</th><th>Step</th><th>Avg entry</th><th>Price</th><th>Unrealized</th><th>Liquidation</th><th>TPs 7d</th><th>Realized 7d</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <div class="panel cta">
+    <h2>Run the same kind of bot for free</h2>
+    <p class="muted">Blitz runs DCA ladders on your own exchange account: Bybit, Gate, KuCoin, Bitget, BingX or Hyperliquid. No subscription (Hyperliquid adds a Blitz builder fee). Your funds stay on your exchange, and Blitz never asks for withdrawal access.</p>
+    <a class="btn" href="https://www.blitz-trading.com/?utm_source=github_pages&amp;utm_medium=web_page&amp;utm_campaign=gh_live_record&amp;utm_content=page_cta">Start with Blitz</a>
+    <a class="btn ghost" href="https://blitztrading.github.io/dca-ladder-calculator/">Try the DCA ladder calculator</a>
+    <p class="muted" style="font-size:12px;margin-top:12px">One account, one bot: a live example, not a promise of future results. Trading involves risk of loss, including your whole margin.</p>
+  </div>
+
+  <p class="social">Follow Blitz:
+    <a href="https://www.youtube.com/@Blitztradinglab/live">YouTube live</a> ·
+    <a href="https://www.youtube.com/@BlitzCryptoLab">Crypto Lab</a> ·
+    <a href="https://t.me/Official_Blitz_Trading_bot">Telegram</a> ·
+    <a href="https://t.me/BlitzTradingLive">Telegram live</a> ·
+    <a href="https://x.com/Blitz_trade_bot">X</a> ·
+    <a href="https://x.com/Blitz_Market_Up">X market</a> ·
+    <a href="https://www.threads.com/@blitztradebot">Threads</a> ·
+    <a href="https://www.instagram.com/blitz_news_26/">Instagram</a>
+  </p>
+  <footer>
+    Raw data: <a href="https://github.com/BlitzTrading/live-bot-record/blob/main/data/daily.csv">data/daily.csv</a> (CC BY 4.0).
+    Made by <a href="https://www.blitz-trading.com/?utm_source=github_pages&amp;utm_medium=web_page&amp;utm_campaign=gh_live_record&amp;utm_content=footer">Blitz Trading</a>.
+  </footer>
+</div>
+<script>
+// RFC 4180 CSV: handles quoted cells with commas, quotes and newlines.
+function parseCsv(text) {
+  const records = [];
+  let row = [], cell = '', quoted = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (quoted) {
+      if (c === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+      else if (c === '"') quoted = false;
+      else cell += c;
+    } else if (c === '"') quoted = true;
+    else if (c === ',') { row.push(cell); cell = ''; }
+    else if (c === '\n' || c === '\r') {
+      if (c === '\r' && text[i + 1] === '\n') i++;
+      row.push(cell); records.push(row); row = []; cell = '';
+    } else cell += c;
+  }
+  if (cell !== '' || row.length) { row.push(cell); records.push(row); }
+  const head = records.shift() || [];
+  return records
+    .filter((r) => r.some((v) => v !== ''))
+    .map((r) => Object.fromEntries(head.map((h, i) => [h, r[i] ?? ''])));
+}
+const n = (v, d = 2) => (v === '' ? '—' : (Number(v) || 0).toLocaleString('en-US', { maximumFractionDigits: d }));
+// Price: more decimals for cheap coins, same rule as the README.
+const fp = (v) => (v === '' ? '—' : n(v, Math.abs(Number(v)) >= 1000 ? 2 : Math.abs(Number(v)) >= 1 ? 4 : 8));
+const sgn = (v, d = 2) => {
+  if (v === '') return '—';
+  const x = Number(v) || 0; // no "-0.00"
+  const t = x.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+  return (x > 0 && /[1-9]/.test(t) ? '+' : '') + (/[1-9]/.test(t) ? t : t.replace('-', ''));
+};
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const unreal = (r) => {
+  const parts = [];
+  if (r.unrealized_usdt !== '') parts.push(sgn(r.unrealized_usdt) + ' USDT');
+  if (r.unrealized_pct !== '') parts.push(parts.length ? '(' + sgn(r.unrealized_pct, 1) + '%)' : sgn(r.unrealized_pct, 1) + '%');
+  return parts.join(' ') || '—';
+};
+const card = (k, v, cls = '') => `<div class="card"><div class="k">${k}</div><div class="v ${cls}">${v}</div></div>`;
+
+fetch('data/daily.csv', { cache: 'no-store' })
+  .then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+  .then((t) => {
+    const rows = parseCsv(t);
+    if (!rows.length) {
+      document.getElementById('cards').innerHTML = card('Status', 'First snapshot coming soon');
+      return;
+    }
+    const last = rows[rows.length - 1];
+    const u = Number(last.unrealized_pct);
+    document.getElementById('cards').innerHTML =
+      card('Live for', 'Day ' + esc(last.day), 'gold') +
+      card('Position', esc([last.symbol, last.side, last.leverage ? n(last.leverage, 2) + 'x' : ''].join(' ').trim() || '—')) +
+      card('Unrealized', last.unrealized_pct === '' ? '—' : sgn(last.unrealized_pct, 1) + '%', u >= 0 ? 'green' : 'red') +
+      card('Take-profits, 7d', last.tp_7d === '' ? '—' : n(last.tp_7d, 0));
+    document.getElementById('rows').innerHTML = rows.slice().reverse().map((r) => `<tr>
+      <td>${esc(r.date)}</td><td>${esc(r.day)}</td><td>${esc([r.symbol, r.side, r.leverage ? n(r.leverage, 2) + 'x' : ''].join(' ').trim() || '—')}</td>
+      <td>${esc(r.step || '—')}</td><td>${fp(r.avg_entry)}</td><td>${fp(r.price)}</td>
+      <td class="${Number(r.unrealized_usdt || r.unrealized_pct) >= 0 ? 'green' : 'red'}">${unreal(r)}</td>
+      <td>${fp(r.liq_price)}</td><td>${r.tp_7d === '' ? '—' : n(r.tp_7d, 0)}</td><td>${r.realized_7d_usdt === '' ? '—' : sgn(r.realized_7d_usdt) + ' USDT'}</td></tr>`).join('');
+  })
+  .catch(() => { document.getElementById('cards').innerHTML = card('Status', 'Could not load data'); });
+</script>
+</body>
+</html>
