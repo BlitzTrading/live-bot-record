@@ -1,4 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 260" width="760" height="260" font-family="Helvetica, Arial, sans-serif" font-size="12">
 <rect width="760" height="260" rx="10" fill="#0A0A0F"/>
 <text x="52" y="14" fill="#9A9890">Unrealized P&amp;L, % of margin (daily snapshot from the live stream)</text>
-<text x="380.0" y="130.0" fill="#9A9890" text-anchor="middle">First snapshot coming soon</text></svg>
+<line x1="52" x2="744" y1="226.0" y2="226.0" stroke="#1E1E28"/>
+<text x="46" y="230.0" fill="#9A9890" text-anchor="end">-31%</text>
+<line x1="52" x2="744" y1="178.0" y2="178.0" stroke="#1E1E28"/>
+<text x="46" y="182.0" fill="#9A9890" text-anchor="end">-22%</text>
+<line x1="52" x2="744" y1="130.0" y2="130.0" stroke="#1E1E28"/>
+<text x="46" y="134.0" fill="#9A9890" text-anchor="end">-14%</text>
+<line x1="52" x2="744" y1="82.0" y2="82.0" stroke="#1E1E28"/>
+<text x="46" y="86.0" fill="#9A9890" text-anchor="end">-6%</text>
+<line x1="52" x2="744" y1="34.0" y2="34.0" stroke="#1E1E28"/>
+<text x="46" y="38.0" fill="#9A9890" text-anchor="end">3%</text>
+<line x1="52" x2="744" y1="50.0" y2="50.0" stroke="#55545E" stroke-dasharray="4 4"/>
+<path d="M398.0,210.0" fill="none" stroke="#F5C842" stroke-width="2.2"/>
+<circle cx="398.0" cy="210.0" r="3.2" fill="#f05252"/>
+<text x="52" y="250" fill="#9A9890">2026-10-11</text>
+</svg>

@@ -1,1 +1,2 @@
 date,day,checked_at,exchange,symbol,side,leverage,step,avg_entry,price,unrealized_usdt,unrealized_pct,liq_price,tp_7d,realized_7d_usdt,note
+2026-10-11,70,14:49,Gate,SKHYUSDT,long,5,7/10,180.83,170.65,-218.37,-28.05,36.11,6,4.79,
