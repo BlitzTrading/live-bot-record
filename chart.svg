@@ -12,16 +12,17 @@
 <line x1="52" x2="744" y1="34.0" y2="34.0" stroke="#1E1E28"/>
 <text x="46" y="38.0" fill="#9A9890" text-anchor="end">9%</text>
 <line x1="52" x2="744" y1="50.0" y2="50.0" stroke="#55545E" stroke-dasharray="4 4"/>
-<path d="M52.0,98.9 L138.5,103.1 L225.0,157.8 L311.5,140.4 L398.0,184.6 L484.5,156.4 L571.0,191.6 L657.5,210.0 L744.0,177.1" fill="none" stroke="#F5C842" stroke-width="2.2"/>
+<path d="M52.0,98.9 L128.9,103.1 L205.8,157.8 L282.7,140.4 L359.6,184.6 L436.4,156.4 L513.3,191.6 L590.2,210.0 L667.1,177.1 L744.0,192.7" fill="none" stroke="#F5C842" stroke-width="2.2"/>
 <circle cx="52.0" cy="98.9" r="3.2" fill="#f05252"/>
-<circle cx="138.5" cy="103.1" r="3.2" fill="#f05252"/>
-<circle cx="225.0" cy="157.8" r="3.2" fill="#f05252"/>
-<circle cx="311.5" cy="140.4" r="3.2" fill="#f05252"/>
-<circle cx="398.0" cy="184.6" r="3.2" fill="#f05252"/>
-<circle cx="484.5" cy="156.4" r="3.2" fill="#f05252"/>
-<circle cx="571.0" cy="191.6" r="3.2" fill="#f05252"/>
-<circle cx="657.5" cy="210.0" r="3.2" fill="#f05252"/>
-<circle cx="744.0" cy="177.1" r="3.2" fill="#f05252"/>
+<circle cx="128.9" cy="103.1" r="3.2" fill="#f05252"/>
+<circle cx="205.8" cy="157.8" r="3.2" fill="#f05252"/>
+<circle cx="282.7" cy="140.4" r="3.2" fill="#f05252"/>
+<circle cx="359.6" cy="184.6" r="3.2" fill="#f05252"/>
+<circle cx="436.4" cy="156.4" r="3.2" fill="#f05252"/>
+<circle cx="513.3" cy="191.6" r="3.2" fill="#f05252"/>
+<circle cx="590.2" cy="210.0" r="3.2" fill="#f05252"/>
+<circle cx="667.1" cy="177.1" r="3.2" fill="#f05252"/>
+<circle cx="744.0" cy="192.7" r="3.2" fill="#f05252"/>
 <text x="52" y="250" fill="#9A9890">2026-10-11</text>
-<text x="744" y="250" fill="#9A9890" text-anchor="end">2026-10-19</text>
+<text x="744" y="250" fill="#9A9890" text-anchor="end">2026-10-20</text>
 </svg>
