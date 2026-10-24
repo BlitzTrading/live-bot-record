@@ -12,20 +12,21 @@
 <line x1="52" x2="744" y1="34.0" y2="34.0" stroke="#1E1E28"/>
 <text x="46" y="38.0" fill="#9A9890" text-anchor="end">9%</text>
 <line x1="52" x2="744" y1="50.0" y2="50.0" stroke="#55545E" stroke-dasharray="4 4"/>
-<path d="M52.0,98.9 L109.7,103.1 L167.3,157.8 L225.0,140.4 L282.7,184.6 L340.3,156.4 L398.0,191.6 L455.7,210.0 L513.3,177.1 L571.0,192.7 L628.7,151.6 L686.3,189.9 L744.0,192.2" fill="none" stroke="#F5C842" stroke-width="2.2"/>
+<path d="M52.0,98.9 L105.2,103.1 L158.5,157.8 L211.7,140.4 L264.9,184.6 L318.2,156.4 L371.4,191.6 L424.6,210.0 L477.8,177.1 L531.1,192.7 L584.3,151.6 L637.5,189.9 L690.8,192.2 L744.0,191.5" fill="none" stroke="#F5C842" stroke-width="2.2"/>
 <circle cx="52.0" cy="98.9" r="3.2" fill="#f05252"/>
-<circle cx="109.7" cy="103.1" r="3.2" fill="#f05252"/>
-<circle cx="167.3" cy="157.8" r="3.2" fill="#f05252"/>
-<circle cx="225.0" cy="140.4" r="3.2" fill="#f05252"/>
-<circle cx="282.7" cy="184.6" r="3.2" fill="#f05252"/>
-<circle cx="340.3" cy="156.4" r="3.2" fill="#f05252"/>
-<circle cx="398.0" cy="191.6" r="3.2" fill="#f05252"/>
-<circle cx="455.7" cy="210.0" r="3.2" fill="#f05252"/>
-<circle cx="513.3" cy="177.1" r="3.2" fill="#f05252"/>
-<circle cx="571.0" cy="192.7" r="3.2" fill="#f05252"/>
-<circle cx="628.7" cy="151.6" r="3.2" fill="#f05252"/>
-<circle cx="686.3" cy="189.9" r="3.2" fill="#f05252"/>
-<circle cx="744.0" cy="192.2" r="3.2" fill="#f05252"/>
+<circle cx="105.2" cy="103.1" r="3.2" fill="#f05252"/>
+<circle cx="158.5" cy="157.8" r="3.2" fill="#f05252"/>
+<circle cx="211.7" cy="140.4" r="3.2" fill="#f05252"/>
+<circle cx="264.9" cy="184.6" r="3.2" fill="#f05252"/>
+<circle cx="318.2" cy="156.4" r="3.2" fill="#f05252"/>
+<circle cx="371.4" cy="191.6" r="3.2" fill="#f05252"/>
+<circle cx="424.6" cy="210.0" r="3.2" fill="#f05252"/>
+<circle cx="477.8" cy="177.1" r="3.2" fill="#f05252"/>
+<circle cx="531.1" cy="192.7" r="3.2" fill="#f05252"/>
+<circle cx="584.3" cy="151.6" r="3.2" fill="#f05252"/>
+<circle cx="637.5" cy="189.9" r="3.2" fill="#f05252"/>
+<circle cx="690.8" cy="192.2" r="3.2" fill="#f05252"/>
+<circle cx="744.0" cy="191.5" r="3.2" fill="#f05252"/>
 <text x="52" y="250" fill="#9A9890">2026-10-11</text>
-<text x="744" y="250" fill="#9A9890" text-anchor="end">2026-10-23</text>
+<text x="744" y="250" fill="#9A9890" text-anchor="end">2026-10-24</text>
 </svg>
