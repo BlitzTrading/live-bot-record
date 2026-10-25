@@ -13,3 +13,4 @@ date,day,checked_at,exchange,symbol,side,leverage,step,avg_entry,price,unrealize
 2026-10-22,81,13:42,Gate,SKHYUSDT,long,5,9/10,164.64,138.12,-1288.61,-80.24,87.01,0,0.0,
 2026-10-23,82,13:41,Gate,SKHYUSDT,long,5,9/10,164.64,137.68,-1309.51,-81.54,87.01,0,0.0,
 2026-10-24,83,13:41,Gate,SKHYUSDT,long,5,,164.64,137.81,-1303.67,-81.18,87.01,,,Blitz dashboard panel was not shown on the stream at capture time; step and 7-day values left blank
+2026-10-25,84,13:41,Gate,SKHYUSDT,long,5,9/10,164.64,138.75,-1257.03,-78.28,87.01,0,0.0,
