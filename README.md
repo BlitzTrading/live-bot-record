@@ -1,6 +1,6 @@
 # Live Bot Record: a real DCA bot, one snapshot a day
 
-A [Blitz](https://www.blitz-trading.com/?utm_source=github&utm_medium=repo&utm_campaign=gh_live_record&utm_content=readme_top) DCA ladder bot has been trading a real exchange account since **3 August 2026**, on a [24/7 YouTube live stream](https://www.youtube.com/@Blitztradinglab/live). Once a day we copy what the stream shows into this repository, so anyone can follow the bot over time instead of seeing only the good days.
+A [Blitz](https://www.blitz-trading.com/?utm_source=github&utm_medium=repo&utm_campaign=gh_live_record&utm_content=readme_top) DCA ladder bot has been trading a real exchange account since **3 August 2026**, on a [24/7 YouTube live stream](https://www.youtube.com/@BlitzTradingLive/live). Once a day we copy what the stream shows into this repository, so anyone can follow the bot over time instead of seeing only the good days.
 
 - **Losing days stay in.** Rows are never edited after the day, except to fix a reading mistake, and every change is visible in the git history.
 - **Only what the stream already shows.** Position, prices, unrealized P&L, liquidation price and take-profit count. Wallet balances are never recorded.
@@ -61,7 +61,7 @@ Trading involves risk of loss, including your whole margin. Nothing here is fina
 
 ## Follow Blitz
 
-- YouTube: [24/7 live bot](https://www.youtube.com/@Blitztradinglab/live) · [Blitz Crypto Lab](https://www.youtube.com/@BlitzCryptoLab)
+- YouTube: [24/7 live bot](https://www.youtube.com/@BlitzTradingLive/live) · [Blitz Crypto Lab](https://www.youtube.com/@BlitzCryptoLab)
 - Telegram: [Official](https://t.me/Official_Blitz_Trading_bot) · [Live updates](https://t.me/BlitzTradingLive)
 - X: [@Blitz_trade_bot](https://x.com/Blitz_trade_bot) · [@Blitz_Market_Up](https://x.com/Blitz_Market_Up)
 - Threads: [@blitztradebot](https://www.threads.com/@blitztradebot) · [@blitz_partner](https://www.threads.com/@blitz_partner)
