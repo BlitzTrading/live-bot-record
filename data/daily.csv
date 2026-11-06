@@ -25,3 +25,4 @@ date,day,checked_at,exchange,symbol,side,leverage,step,avg_entry,price,unrealize
 2026-11-03,93,13:42,Gate,SKHYUSDT,long,5,,151.62,147.94,-42.39,-11.87,,,,Est. Liq. Price shown as -- on the stream; step and 7-day realized panel not visible on the stream today; left blank
 2026-11-04,94,13:41,Gate,SKHYUSDT,long,5,,147.53,142.57,-88.92,-16.68,,,,Est. Liq. Price shown as -- on the stream; step and 7-day realized panel not visible on the stream today; left blank
 2026-11-05,95,13:41,Gate,SKHYUSDT,long,5,6/10,144.4,137.73,-122.11,-22.91,,62,58.41,Est. Liq. Price shown as -- on the stream; left blank
+2026-11-06,96,13:42,Gate,SKHYUSDT,long,5,8/10,135.18,127.02,-334.6,-29.78,40.69,62,58.41,

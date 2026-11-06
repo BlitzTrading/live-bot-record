@@ -7,12 +7,13 @@ A [Blitz](https://www.blitz-trading.com/?utm_source=github&utm_medium=repo&utm_c
 - **One account, one bot.** This is a single live example, not a promise of future results.
 
 <!-- RECORD:START -->
-**Day 95** · last snapshot 2026-11-05 13:41 KST
+**Day 96** · last snapshot 2026-11-06 13:42 KST
 
 ![Unrealized P&L chart](chart.svg)
 
 | Date (KST) | Day | Position | Step | Avg entry | Price | Unrealized | Liquidation | TPs (7d) | Realized (7d) |
 | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 2026-11-06 | 96 | SKHYUSDT long 5x | 8/10 | 135.18 | 127.02 | -334.60 USDT (-29.8%) | 40.69 | 62 | +58.41 USDT |
 | 2026-11-05 | 95 | SKHYUSDT long 5x | 6/10 | 144.4 | 137.73 | -122.11 USDT (-22.9%) | — | 62 | +58.41 USDT |
 | 2026-11-04 | 94 | SKHYUSDT long 5x | — | 147.53 | 142.57 | -88.92 USDT (-16.7%) | — | — | — |
 | 2026-11-03 | 93 | SKHYUSDT long 5x | — | 151.62 | 147.94 | -42.39 USDT (-11.9%) | — | — | — |
