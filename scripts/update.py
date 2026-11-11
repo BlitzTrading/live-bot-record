@@ -1,14 +1,21 @@
-"""Add one daily snapshot of the live Blitz bot and re-render README.md and chart.svg.
+"""Add one daily snapshot of a live Blitz bot and re-render README.md and chart.svg.
 
 Usage:
-    python scripts/update.py add <row.json>   # add or replace the row for that date, then render
-    python scripts/update.py render           # only re-render
+    python scripts/update.py add <row.json>              # SKHY bot: add or replace the row for that date, then render
+    python scripts/update.py add-btc <row.json>          # BTC bot: same, into data/btc-daily.csv
+    python scripts/update.py add-btc-capture <cap.json>  # BTC bot: take the row from a capture_btc_record.py json
+    python scripts/update.py render                      # only re-render
 
 row.json holds the numbers read from the live stream overlay, for example:
     {"date": "2026-10-11", "checked_at": "13:05", "exchange": "Gate", "symbol": "SKHY",
      "side": "long", "leverage": 5, "step": "7/10", "avg_entry": 180.83, "price": 170.1,
      "unrealized_usdt": -222.0, "unrealized_pct": -28.5, "liq_price": 36.2,
      "tp_7d": 7, "realized_7d_usdt": 5.75, "note": ""}
+
+A BTC row.json uses BTC_FIELDS, for example:
+    {"date": "2026-11-10", "checked_at": "13:44", "exchange": "Gate", "symbol": "BTCUSDT", "side": "long",
+     "leverage": 5, "step": "8/18", "avg_entry": 75683.25, "size_btc": 0.0068, "cycles_closed": 5,
+     "tps_all": 5, "sl_all": 0, "realized_all_usdt": 0.9, "note": ""}
 
 Only standard library. Wallet balances are never recorded.
 """
@@ -25,13 +32,18 @@ CSV_PATH = ROOT / "data" / "daily.csv"
 README = ROOT / "README.md"
 CHART = ROOT / "chart.svg"
 START = dt.date(2026, 8, 3)  # bot went live; 2026-08-03 is Day 1
+BTC_CSV = ROOT / "data" / "btc-daily.csv"
+BTC_START = dt.date(2026, 11, 6)  # BTC bot went live; 2026-11-06 is Day 1
 
 FIELDS = ["date", "day", "checked_at", "exchange", "symbol", "side", "leverage", "step",
           "avg_entry", "price", "unrealized_usdt", "unrealized_pct", "liq_price",
           "tp_7d", "realized_7d_usdt", "note"]
 NUMERIC = ["leverage", "avg_entry", "price", "unrealized_usdt", "unrealized_pct", "liq_price",
            "tp_7d", "realized_7d_usdt"]
-FORBIDDEN = ["balance", "wallet", "equity", "email", "uid"]
+BTC_FIELDS = ["date", "day", "checked_at", "exchange", "symbol", "side", "leverage", "step",
+              "avg_entry", "size_btc", "cycles_closed", "tps_all", "sl_all", "realized_all_usdt", "note"]
+BTC_NUMERIC = ["leverage", "avg_entry", "size_btc", "cycles_closed", "tps_all", "sl_all", "realized_all_usdt"]
+FORBIDDEN = ["balance", "wallet", "equity", "email", "uid", "principal"]
 TEXT = ["checked_at", "exchange", "symbol", "side", "step"]
 NUMBER_RE = re.compile(r"^-?[0-9]+(\.[0-9]+)?$")
 TIME_RE = re.compile(r"^([01][0-9]|2[0-3]):[0-5][0-9]$")
@@ -59,43 +71,43 @@ TEXT_RE = re.compile(r"^[A-Za-z0-9 ./:_-]*$")
 UTM = "utm_source=github&utm_medium=repo&utm_campaign=gh_live_record"
 
 
-def load_rows():
-    if not CSV_PATH.exists():
+def load_rows(path=CSV_PATH):
+    if not path.exists():
         return []
-    with CSV_PATH.open(newline="", encoding="utf-8") as f:
+    with path.open(newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
 
 
-def save_rows(rows):
+def save_rows(rows, path=CSV_PATH, fields=FIELDS):
     rows.sort(key=lambda r: r["date"])
-    CSV_PATH.parent.mkdir(exist_ok=True)
-    with CSV_PATH.open("w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=FIELDS, lineterminator="\n")
+    path.parent.mkdir(exist_ok=True)
+    with path.open("w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=fields, lineterminator="\n")
         w.writeheader()
         for r in rows:
-            w.writerow({k: r.get(k, "") for k in FIELDS})
+            w.writerow({k: r.get(k, "") for k in fields})
 
 
-def clean_row(raw):
+def clean_row(raw, fields=FIELDS, numeric=NUMERIC, start=START):
     bad = [k for k in raw if any(word in k.lower() for word in FORBIDDEN)]
     if bad:
         sys.exit(f"refused: fields {bad} must never be recorded")
-    unknown = [k for k in raw if k not in FIELDS]
+    unknown = [k for k in raw if k not in fields]
     if unknown:
-        sys.exit(f"unknown fields {unknown}; allowed: {FIELDS}")
+        sys.exit(f"unknown fields {unknown}; allowed: {fields}")
     try:
         day = dt.date.fromisoformat(str(raw["date"]))
     except (KeyError, ValueError):
         sys.exit("date is required as YYYY-MM-DD (KST)")
-    row = {k: "" for k in FIELDS}
-    row.update({k: ("" if v is None else str(v)) for k, v in raw.items() if k not in NUMERIC})
-    row.update({k: plain_number(v) for k, v in raw.items() if k in NUMERIC})
+    row = {k: "" for k in fields}
+    row.update({k: ("" if v is None else str(v)) for k, v in raw.items() if k not in numeric})
+    row.update({k: plain_number(v) for k, v in raw.items() if k in numeric})
     if day > dt.datetime.now(KST).date():
         sys.exit(f"date {day} is in the future (KST)")
-    if day < START:
-        sys.exit(f"date must be on or after {START} (the bot's first live day)")
+    if day < start:
+        sys.exit(f"date must be on or after {start} (the bot's first live day)")
     row["date"] = day.isoformat()
-    row["day"] = str((day - START).days + 1)
+    row["day"] = str((day - start).days + 1)
     for k in TEXT:
         row[k] = row[k].strip()
         if not TEXT_RE.match(row[k]):
@@ -105,7 +117,7 @@ def clean_row(raw):
     row["side"] = row["side"].lower()
     if row["checked_at"] and not TIME_RE.match(row["checked_at"]):
         sys.exit(f"checked_at must be HH:MM (KST), got {row['checked_at']!r}")
-    for k in NUMERIC:
+    for k in numeric:
         if row[k] != "" and not NUMBER_RE.match(row[k]):
             sys.exit(f"{k} must be a plain number like -12.5, got {row[k]!r}")
     if row["side"] and row["side"] not in ("long", "short", "flat"):
@@ -189,22 +201,68 @@ def table(rows):
     return "\n".join(lines)
 
 
+def btc_row_from_capture(cap):
+    """Row for data/btc-daily.csv from a capture_btc_record.py json. Only the listed fields are copied:
+    the capture also holds the wallet and the principal, which are never recorded."""
+    strategy = str(cap.get("strategy") or "")
+    if "BTC" not in strategy:
+        sys.exit(f"refused: capture is not the BTC bot (strategy {strategy!r})")
+    lev = re.search(r"(\d+(?:\.\d+)?)\s*[xX]\b", strategy)
+    side = re.match(r"\s*\[(Long|Short)\]", strategy)
+    read = str(cap.get("read_kst") or "")
+    step = ""
+    if cap.get("step") not in (None, "") and cap.get("steps") not in (None, ""):
+        step = f'{cap["step"]}/{cap["steps"]}'
+    return {"date": cap.get("kst_date"), "checked_at": read[11:16] if len(read) >= 16 else "",
+            "exchange": "Gate", "symbol": "BTCUSDT", "side": side.group(1).lower() if side else "",
+            "leverage": lev.group(1) if lev else "", "step": step,
+            "avg_entry": cap.get("avg_entry"), "size_btc": cap.get("size_btc"),
+            "cycles_closed": cap.get("cycles"), "tps_all": cap.get("tps"), "sl_all": cap.get("sl"),
+            "realized_all_usdt": cap.get("realized_all"), "note": ""}
+
+
+def btc_table(rows):
+    head = ("| Date (KST) | Day | Position | Step | Avg entry | Size (BTC) | Cycles closed | TPs | SLs | Realized (all time) |\n"
+            "| --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |")
+    lines = [head]
+    for r in sorted(rows, key=lambda r: r["date"], reverse=True):
+        pos = " ".join(p for p in [r["symbol"], r["side"], (f(r["leverage"], 2) + "x") if r["leverage"] else ""] if p)
+        realized = f'{f(r["realized_all_usdt"], 2, sign=True)} USDT' if r["realized_all_usdt"] else "—"
+        cnt = lambda k: f(r[k], 0) if r[k] else "—"
+        lines.append(f'| {r["date"]} | {r["day"]} | {pos or "—"} | {r["step"] or "—"} | {fp(r["avg_entry"])} | '
+                     f'{f(r["size_btc"], 8) if r["size_btc"] else "—"} | {cnt("cycles_closed")} | {cnt("tps_all")} | '
+                     f'{cnt("sl_all")} | {realized} |')
+    if len(lines) == 1:
+        lines.append("| — | | First snapshot coming soon | | | | | | | |")
+    return "\n".join(lines)
+
+
+def replace_block(text, start, end, block):
+    if start not in text or end not in text:
+        sys.exit(f"README markers missing: {start} {end}")
+    head, rest = text.split(start, 1)
+    _, tail = rest.split(end, 1)
+    return head + start + "\n" + block + "\n" + end + tail
+
+
+def status_line(latest):
+    if not latest:
+        return "**Waiting for the first snapshot**"
+    when = " ".join(p for p in [latest["date"], latest["checked_at"]] if p)
+    return f'**Day {latest["day"]}** · last snapshot {when} KST'
+
+
 def render():
     rows = load_rows()
     CHART.write_text(chart(rows), encoding="utf-8")
     text = README.read_text(encoding="utf-8")
-    start, end = "<!-- RECORD:START -->", "<!-- RECORD:END -->"
-    if start not in text or end not in text:
-        sys.exit("README markers missing")
-    latest = rows[-1] if rows else None
-    when = " ".join(p for p in [latest["date"], latest["checked_at"]] if p) if latest else ""
-    status = (f'**Day {latest["day"]}** · last snapshot {when} KST'
-              if latest else "**Waiting for the first snapshot**")
-    block = f"{start}\n{status}\n\n![Unrealized P&L chart](chart.svg)\n\n{table(rows)}\n{end}"
-    head, rest = text.split(start, 1)
-    _, tail = rest.split(end, 1)
-    README.write_text(head + block + tail, encoding="utf-8")
-    print(f"rendered {len(rows)} rows")
+    text = replace_block(text, "<!-- RECORD:START -->", "<!-- RECORD:END -->",
+                         f"{status_line(rows[-1] if rows else None)}\n\n![Unrealized P&L chart](chart.svg)\n\n{table(rows)}")
+    btc = load_rows(BTC_CSV)
+    text = replace_block(text, "<!-- BTC:START -->", "<!-- BTC:END -->",
+                         f"{status_line(btc[-1] if btc else None)}\n\n{btc_table(btc)}")
+    README.write_text(text, encoding="utf-8")
+    print(f"rendered {len(rows)} SKHY rows, {len(btc)} BTC rows")
 
 
 def main():
@@ -217,6 +275,16 @@ def main():
         rows = [r for r in load_rows() if r["date"] != row["date"]] + [row]
         save_rows(rows)
         print(f'saved Day {row["day"]} ({row["date"]})')
+        render()
+        return
+    if len(sys.argv) == 3 and sys.argv[1] in ("add-btc", "add-btc-capture"):
+        raw = json.loads(Path(sys.argv[2]).read_text(encoding="utf-8-sig"))
+        if sys.argv[1] == "add-btc-capture":
+            raw = btc_row_from_capture(raw)
+        row = clean_row(raw, BTC_FIELDS, BTC_NUMERIC, BTC_START)
+        rows = [r for r in load_rows(BTC_CSV) if r["date"] != row["date"]] + [row]
+        save_rows(rows, BTC_CSV, BTC_FIELDS)
+        print(f'saved BTC Day {row["day"]} ({row["date"]})')
         render()
         return
     sys.exit(__doc__)

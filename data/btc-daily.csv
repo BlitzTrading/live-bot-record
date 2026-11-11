@@ -1,0 +1,6 @@
+date,day,checked_at,exchange,symbol,side,leverage,step,avg_entry,size_btc,cycles_closed,tps_all,sl_all,realized_all_usdt,note
+2026-11-06,1,13:32,Gate,BTCUSDT,long,5,5/18,76291.4,0.0047,5,5,0,0.9,
+2026-11-07,2,13:13,Gate,BTCUSDT,long,5,6/18,76113.6,0.0054,5,5,0,0.9,
+2026-11-08,3,13:11,Gate,BTCUSDT,long,5,6/18,76113.6,0.0054,5,5,0,0.9,
+2026-11-09,4,07:37,Gate,BTCUSDT,long,5,8/18,75683.25,0.0068,5,5,0,0.9,
+2026-11-10,5,13:44,Gate,BTCUSDT,long,5,8/18,75683.25,0.0068,5,5,0,0.9,

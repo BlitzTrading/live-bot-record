@@ -1,10 +1,15 @@
-# Live Bot Record: a real DCA bot, one snapshot a day
+# Live Bot Record: real DCA bots, one snapshot a day
 
-A [Blitz](https://www.blitz-trading.com/?utm_source=github&utm_medium=repo&utm_campaign=gh_live_record&utm_content=readme_top) DCA ladder bot has been trading a real exchange account since **3 August 2026**, on a [24/7 YouTube live stream](https://www.youtube.com/@BlitzTradingLive/live). Once a day we copy what the stream shows into this repository, so anyone can follow the bot over time instead of seeing only the good days.
+Two [Blitz](https://www.blitz-trading.com/?utm_source=github&utm_medium=repo&utm_campaign=gh_live_record&utm_content=readme_top) DCA ladder bots trade real exchange accounts, each on its own 24/7 YouTube live stream. Once a day we copy what the bot's screen shows into this repository, so anyone can follow the bots over time instead of seeing only the good days.
+
+- **SKHY bot**: live since **3 August 2026**, on the [English 24/7 stream](https://www.youtube.com/@BlitzTradingLive/live).
+- **BTC bot**: live since **6 November 2026** on a separate account, on the [Spanish 24/7 stream](https://www.youtube.com/@BlitzCriptoES/live).
 
 - **Losing days stay in.** Rows are never edited after the day, except to fix a reading mistake, and every change is visible in the git history.
-- **Only what the stream already shows.** Position, prices, unrealized P&L, liquidation price and take-profit count. Wallet balances are never recorded.
-- **One account, one bot.** This is a single live example, not a promise of future results.
+- **Only what the screen already shows.** Position, prices, P&L, liquidation price and take-profit counts. Wallet balances are never recorded.
+- **One account per bot.** These are live examples, not a promise of future results.
+
+## SKHY bot (English stream)
 
 <!-- RECORD:START -->
 **Day 101** · last snapshot 2026-11-11 13:41 KST
@@ -47,18 +52,36 @@ A [Blitz](https://www.blitz-trading.com/?utm_source=github&utm_medium=repo&utm_c
 | 2026-10-11 | 70 | SKHYUSDT long 5x | 7/10 | 180.83 | 170.65 | -218.37 USDT (-28.1%) | 36.11 | 6 | +4.79 USDT |
 <!-- RECORD:END -->
 
-Raw data: [`data/daily.csv`](data/daily.csv) · Web view: [blitztrading.github.io/live-bot-record](https://blitztrading.github.io/live-bot-record/)
+## BTC bot (Spanish stream)
+
+BTCUSDT 5x long, 18-step ladder, +1.5% take-profit, no stop-loss. Read once a day from the bot's Blitz dashboard, the same screen the [Spanish 24/7 stream](https://www.youtube.com/@BlitzCriptoES/live) shows (the stream started on 10 Nov 2026; earlier rows were read from the dashboard directly). Counts and realized P&L are all-time since Day 1.
+
+<!-- BTC:START -->
+**Day 5** · last snapshot 2026-11-10 13:44 KST
+
+| Date (KST) | Day | Position | Step | Avg entry | Size (BTC) | Cycles closed | TPs | SLs | Realized (all time) |
+| --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 2026-11-10 | 5 | BTCUSDT long 5x | 8/18 | 75,683.25 | 0.0068 | 5 | 5 | 0 | +0.90 USDT |
+| 2026-11-09 | 4 | BTCUSDT long 5x | 8/18 | 75,683.25 | 0.0068 | 5 | 5 | 0 | +0.90 USDT |
+| 2026-11-08 | 3 | BTCUSDT long 5x | 6/18 | 76,113.6 | 0.0054 | 5 | 5 | 0 | +0.90 USDT |
+| 2026-11-07 | 2 | BTCUSDT long 5x | 6/18 | 76,113.6 | 0.0054 | 5 | 5 | 0 | +0.90 USDT |
+| 2026-11-06 | 1 | BTCUSDT long 5x | 5/18 | 76,291.4 | 0.0047 | 5 | 5 | 0 | +0.90 USDT |
+<!-- BTC:END -->
+
+Raw data: [`data/daily.csv`](data/daily.csv) (SKHY) · [`data/btc-daily.csv`](data/btc-daily.csv) (BTC) · Web view: [blitztrading.github.io/live-bot-record](https://blitztrading.github.io/live-bot-record/)
 
 ## How to read it
 
 | Column | Meaning |
 | --- | --- |
-| Day | Days since the bot went live (3 Aug 2026 = Day 1). |
+| Day | Days since the bot went live (SKHY: 3 Aug 2026 = Day 1, BTC: 6 Nov 2026 = Day 1). |
 | Step | How many of the ladder's orders are filled, e.g. `7/10`. A DCA ladder adds to the position as price moves against it. |
 | Avg entry | Average entry price of the open position. |
 | Unrealized | Open P&L in USDT and as % of margin, as the stream shows it. A DCA bot can sit deep in the red while it waits for a bounce. |
 | Liquidation | Estimated liquidation price shown by the exchange. |
-| TPs (7d), Realized (7d) | Take-profits closed and realized P&L over the last 7 days, as the stream shows it. |
+| TPs (7d), Realized (7d) | SKHY: take-profits closed and realized P&L over the last 7 days, as the stream shows it. |
+| Size (BTC) | BTC: size of the open position. |
+| Cycles closed, TPs, SLs, Realized (all time) | BTC: ladder cycles closed since Day 1, how many ended at take-profit or stop-loss, and the realized P&L. |
 
 Want to see how the average entry and liquidation move as a ladder fills? Try the free [DCA Ladder Calculator](https://blitztrading.github.io/dca-ladder-calculator/).
 
@@ -74,7 +97,7 @@ Trading involves risk of loss, including your whole margin. Nothing here is fina
 
 ## Follow Blitz
 
-- YouTube: [24/7 live bot](https://www.youtube.com/@BlitzTradingLive/live) · [Blitz Crypto Lab](https://www.youtube.com/@BlitzCryptoLab)
+- YouTube: [24/7 live bot (English)](https://www.youtube.com/@BlitzTradingLive/live) · [24/7 live bot (Spanish)](https://www.youtube.com/@BlitzCriptoES/live) · [Blitz Crypto Lab](https://www.youtube.com/@BlitzCryptoLab)
 - Telegram: [Official](https://t.me/Official_Blitz_Trading_bot) · [Live updates](https://t.me/BlitzTradingLive)
 - X: [@Blitz_trade_bot](https://x.com/Blitz_trade_bot) · [@Blitz_Market_Up](https://x.com/Blitz_Market_Up)
 - Threads: [@blitztradebot](https://www.threads.com/@blitztradebot) · [@blitz_partner](https://www.threads.com/@blitz_partner)

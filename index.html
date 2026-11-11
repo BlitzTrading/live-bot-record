@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Live Bot Record: a real DCA trading bot, day by day</title>
-<meta name="description" content="Daily public record of a real Blitz DCA ladder bot trading a live exchange account since 3 Aug 2026. Losing days included.">
+<title>Live Bot Record: real DCA trading bots, day by day</title>
+<meta name="description" content="Daily public record of real Blitz DCA ladder bots on live exchange accounts: SKHY since 3 Aug 2026, BTC since 6 Nov 2026. Losing days included.">
 <link rel="canonical" href="https://blitztrading.github.io/live-bot-record/">
-<meta property="og:title" content="Live Bot Record: a real DCA bot, day by day">
-<meta property="og:description" content="A real DCA ladder bot on a live account since 3 Aug 2026. One snapshot a day, losing days included.">
+<meta property="og:title" content="Live Bot Record: real DCA bots, day by day">
+<meta property="og:description" content="Real DCA ladder bots on live accounts, each on a 24/7 stream. One snapshot a day, losing days included.">
 <meta property="og:url" content="https://blitztrading.github.io/live-bot-record/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,6 +45,8 @@
   footer a { color: var(--muted); }
   .social { color: var(--muted); font-size: 13px; margin: 24px 0 12px; line-height: 2; }
   .social a { color: var(--muted); }
+  h2.sec { font: 800 20px "Plus Jakarta Sans", sans-serif; margin: 26px 0 10px; }
+  h2.sec .muted { font: 500 14px "DM Sans", sans-serif; }
 </style>
 </head>
 <body>
@@ -52,13 +54,16 @@
   <header class="top">
     <a class="brand" href="https://www.blitz-trading.com/?utm_source=github_pages&amp;utm_medium=web_page&amp;utm_campaign=gh_live_record&amp;utm_content=header_logo">BLITZ <span>TRADING</span></a>
     <nav class="toplinks">
-      <a href="https://www.youtube.com/@BlitzTradingLive/live">Live stream</a>
+      <a href="https://www.youtube.com/@BlitzTradingLive/live">Live (EN)</a>
+      <a href="https://www.youtube.com/@BlitzCriptoES/live">Live (ES)</a>
       <a href="https://github.com/BlitzTrading/live-bot-record">Data</a>
     </nav>
   </header>
 
   <h1>Live Bot Record</h1>
-  <p class="lede">A real Blitz DCA ladder bot has traded a live exchange account since 3 August 2026, on a 24/7 stream. Once a day we copy what the stream shows here. Losing days stay in, and wallet balances are never recorded.</p>
+  <p class="lede">Two real Blitz DCA ladder bots trade live exchange accounts, each on its own 24/7 stream. Once a day we copy what the bot's screen shows here. Losing days stay in, and wallet balances are never recorded.</p>
+
+  <h2 class="sec">SKHY bot <span class="muted">· since 3 Aug 2026 · <a href="https://www.youtube.com/@BlitzTradingLive/live">English 24/7 stream</a></span></h2>
 
   <div class="panel">
     <div class="cards" id="cards"><div class="card"><div class="k">Status</div><div class="v">Loading…</div></div></div>
@@ -71,16 +76,29 @@
     </table>
   </div>
 
+  <h2 class="sec">BTC bot <span class="muted">· since 6 Nov 2026 · <a href="https://www.youtube.com/@BlitzCriptoES/live">Spanish 24/7 stream</a></span></h2>
+  <p class="muted">BTCUSDT 5x long, 18-step ladder, +1.5% take-profit, no stop-loss, on a separate account. Counts and realized P&amp;L are all-time since Day 1.</p>
+  <div class="panel">
+    <div class="cards" id="btc-cards"><div class="card"><div class="k">Status</div><div class="v">Loading…</div></div></div>
+  </div>
+  <div class="panel tablewrap">
+    <table>
+      <thead><tr><th>Date (KST)</th><th>Day</th><th>Position</th><th>Step</th><th>Avg entry</th><th>Size (BTC)</th><th>Cycles closed</th><th>TPs</th><th>SLs</th><th>Realized (all time)</th></tr></thead>
+      <tbody id="btc-rows"></tbody>
+    </table>
+  </div>
+
   <div class="panel cta">
     <h2>Run the same kind of bot for free</h2>
     <p class="muted">Blitz runs DCA ladders on your own exchange account: Bybit, Gate, KuCoin, Bitget, BingX or Hyperliquid. No subscription (Hyperliquid adds a Blitz builder fee). Your funds stay on your exchange, and Blitz never asks for withdrawal access.</p>
     <a class="btn" href="https://www.blitz-trading.com/?utm_source=github_pages&amp;utm_medium=web_page&amp;utm_campaign=gh_live_record&amp;utm_content=page_cta">Start with Blitz</a>
     <a class="btn ghost" href="https://blitztrading.github.io/dca-ladder-calculator/">Try the DCA ladder calculator</a>
-    <p class="muted" style="font-size:12px;margin-top:12px">One account, one bot: a live example, not a promise of future results. Trading involves risk of loss, including your whole margin.</p>
+    <p class="muted" style="font-size:12px;margin-top:12px">One account per bot: live examples, not a promise of future results. Trading involves risk of loss, including your whole margin.</p>
   </div>
 
   <p class="social">Follow Blitz:
-    <a href="https://www.youtube.com/@BlitzTradingLive/live">YouTube live</a> ·
+    <a href="https://www.youtube.com/@BlitzTradingLive/live">YouTube live (EN)</a> ·
+    <a href="https://www.youtube.com/@BlitzCriptoES/live">YouTube live (ES)</a> ·
     <a href="https://www.youtube.com/@BlitzCryptoLab">Crypto Lab</a> ·
     <a href="https://t.me/Official_Blitz_Trading_bot">Telegram</a> ·
     <a href="https://t.me/BlitzTradingLive">Telegram live</a> ·
@@ -90,7 +108,7 @@
     <a href="https://www.instagram.com/blitz_news_26/">Instagram</a>
   </p>
   <footer>
-    Raw data: <a href="https://github.com/BlitzTrading/live-bot-record/blob/main/data/daily.csv">data/daily.csv</a> (CC BY 4.0).
+    Raw data: <a href="https://github.com/BlitzTrading/live-bot-record/blob/main/data/daily.csv">data/daily.csv</a> (SKHY) · <a href="https://github.com/BlitzTrading/live-bot-record/blob/main/data/btc-daily.csv">data/btc-daily.csv</a> (BTC) (CC BY 4.0).
     Made by <a href="https://www.blitz-trading.com/?utm_source=github_pages&amp;utm_medium=web_page&amp;utm_campaign=gh_live_record&amp;utm_content=footer">Blitz Trading</a>.
   </footer>
 </div>
@@ -158,6 +176,32 @@ fetch('data/daily.csv', { cache: 'no-store' })
       <td>${fp(r.liq_price)}</td><td>${r.tp_7d === '' ? '—' : n(r.tp_7d, 0)}</td><td>${r.realized_7d_usdt === '' ? '—' : sgn(r.realized_7d_usdt) + ' USDT'}</td></tr>`).join('');
   })
   .catch(() => { document.getElementById('cards').innerHTML = card('Status', 'Could not load data'); });
+
+fetch('data/btc-daily.csv', { cache: 'no-store' })
+  .then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+  .then((t) => {
+    const rows = parseCsv(t);
+    if (!rows.length) {
+      document.getElementById('btc-cards').innerHTML = card('Status', 'First snapshot coming soon');
+      return;
+    }
+    const last = rows[rows.length - 1];
+    const pos = (r) => esc([r.symbol, r.side, r.leverage ? n(r.leverage, 2) + 'x' : ''].join(' ').trim() || '—');
+    const cnt = (v) => (v === '' ? '—' : n(v, 0));
+    const rz = (v) => (v === '' ? '—' : sgn(v) + ' USDT');
+    const rcls = (v) => (v === '' ? '' : Number(v) >= 0 ? 'green' : 'red');
+    document.getElementById('btc-cards').innerHTML =
+      card('Live for', 'Day ' + esc(last.day), 'gold') +
+      card('Step', esc(last.step || '—')) +
+      card('Take-profits, all time', cnt(last.tps_all)) +
+      card('Realized, all time', rz(last.realized_all_usdt), rcls(last.realized_all_usdt));
+    document.getElementById('btc-rows').innerHTML = rows.slice().reverse().map((r) => `<tr>
+      <td>${esc(r.date)}</td><td>${esc(r.day)}</td><td>${pos(r)}</td>
+      <td>${esc(r.step || '—')}</td><td>${fp(r.avg_entry)}</td><td>${r.size_btc === '' ? '—' : n(r.size_btc, 8)}</td>
+      <td>${cnt(r.cycles_closed)}</td><td>${cnt(r.tps_all)}</td><td>${cnt(r.sl_all)}</td>
+      <td class="${rcls(r.realized_all_usdt)}">${rz(r.realized_all_usdt)}</td></tr>`).join('');
+  })
+  .catch(() => { document.getElementById('btc-cards').innerHTML = card('Status', 'Could not load data'); });
 </script>
 </body>
 </html>
