@@ -61,10 +61,11 @@ Two [Blitz](https://www.blitz-trading.com/?utm_source=github&utm_medium=repo&utm
 BTCUSDT 5x long, 18-step ladder, +1.5% take-profit, no stop-loss. Read once a day from the bot's Blitz dashboard, the same screen the [Spanish 24/7 stream](https://www.youtube.com/@BlitzCriptoES/live) shows (the stream started on 10 Nov 2026; earlier rows were read from the dashboard directly). Counts and realized P&L are all-time since Day 1.
 
 <!-- BTC:START -->
-**Day 9** · last snapshot 2026-11-14 13:42 KST
+**Day 10** · last snapshot 2026-11-15 13:43 KST
 
 | Date (KST) | Day | Position | Step | Avg entry | Size (BTC) | Cycles closed | TPs | SLs | Realized (all time) |
 | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 2026-11-15 | 10 | BTCUSDT long 5x | 14/18 | 68,940.17 | 0.0256 | 5 | 5 | 0 | +0.90 USDT |
 | 2026-11-14 | 9 | BTCUSDT long 5x | 12/18 | 72,619.19 | 0.0138 | 5 | 5 | 0 | +0.90 USDT |
 | 2026-11-13 | 8 | BTCUSDT long 5x | 11/18 | 73,882.78 | 0.0108 | 5 | 5 | 0 | +0.90 USDT |
 | 2026-11-12 | 7 | BTCUSDT long 5x | 8/18 | 75,683.25 | 0.0068 | 5 | 5 | 0 | +0.90 USDT |
