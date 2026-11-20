@@ -12,12 +12,13 @@ Two [Blitz](https://www.blitz-trading.com/?utm_source=github&utm_medium=repo&utm
 ## SKHY bot (English stream)
 
 <!-- RECORD:START -->
-**Day 109** · last snapshot 2026-11-19 13:41 KST
+**Day 110** · last snapshot 2026-11-20 13:40 KST
 
 ![Unrealized P&L chart](chart.svg)
 
 | Date (KST) | Day | Position | Step | Avg entry | Price | Unrealized | Liquidation | TPs (7d) | Realized (7d) |
 | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 2026-11-20 | 110 | SKHYUSDT long 5x | 7/10 | 132.37 | 118.35 | -410.93 USDT (-52.8%) | — | 0 | 0.00 USDT |
 | 2026-11-19 | 109 | SKHYUSDT long 5x | 7/10 | 132.37 | 126.01 | -185.54 USDT (-23.8%) | — | 4 | +1.49 USDT |
 | 2026-11-18 | 108 | SKHYUSDT long 5x | 7/10 | 132.37 | 127.05 | -155.64 USDT (-20.0%) | — | 24 | +21.97 USDT |
 | 2026-11-17 | 107 | SKHYUSDT long 5x | 7/10 | 132.37 | 124.56 | -228.04 USDT (-29.3%) | — | 64 | +40.51 USDT |
