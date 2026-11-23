@@ -41,3 +41,4 @@ date,day,checked_at,exchange,symbol,side,leverage,step,avg_entry,price,unrealize
 2026-11-19,109,13:41,Gate,SKHYUSDT,long,5,7/10,132.37,126.01,-185.54,-23.83,,4,1.49,Est. Liq. Price shown as -- on the stream; left blank
 2026-11-20,110,13:40,Gate,SKHYUSDT,long,5,7/10,132.37,118.35,-410.93,-52.76,,0,0.0,Est. Liq. Price shown as -- on the stream; left blank
 2026-11-21,111,13:41,Gate,SKHYUSDT,long,5,9/10,132.37,103.51,-845.89,-108.61,,0,0.0,Est. Liq. Price shown as -- on the stream; left blank. Bot dashboard shows Step 9 of 10 with avg entry 120.53 while the Gate position row shows entry 132.37 (unchanged since Day 107); Gate row recorded as shown
+2026-11-23,113,13:42,Gate,SKHYUSDT,long,5,9/10,120.52,111.27,-611.36,-38.07,60.44,0,0.0,Gate position row entry now 120.52 (bot dashboard avg entry 120.53 Step 9 of 10); Est. Liq. Price shown as 60.44
