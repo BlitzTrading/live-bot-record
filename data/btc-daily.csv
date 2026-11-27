@@ -20,3 +20,4 @@ date,day,checked_at,exchange,symbol,side,leverage,step,avg_entry,size_btc,cycles
 2026-11-24,19,13:36,Gate,BTCUSDT,long,5,10/18,62538.79,0.0105,7,7,0,8.48,
 2026-11-25,20,13:43,Gate,BTCUSDT,long,5,10/18,62538.79,0.0105,7,7,0,8.48,
 2026-11-26,21,13:43,Gate,BTCUSDT,long,5,11/18,61797.31,0.0128,7,7,0,8.48,
+2026-11-27,22,13:42,Gate,BTCUSDT,long,5,11/18,61797.31,0.0128,7,7,0,8.48,
